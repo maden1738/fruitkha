@@ -9,7 +9,9 @@ const getFruit = async (req, res, next) => {
      try {
           const fruits = await FruitModel.find({
                name: RegExp(searchTerm, "i"),
-          });
+          })
+               .limit(perPage)
+               .skip((page - 1) * perPage);
           const total = await FruitModel.find({
                name: RegExp(searchTerm, "i"),
           }).countDocuments();
