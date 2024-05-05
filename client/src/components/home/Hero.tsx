@@ -25,7 +25,7 @@ export default function Hero() {
             <div
               key={idx}
               // className="relative h-screen bg-primary before:absolute before:inset-0 before:bg-hero1 before:bg-cover before:bg-center before:brightness-50 before:contrast-100 before:content-['']"
-              className="relative h-screen bg-primary"
+              className="relative h-screen   bg-primary"
             >
               <div
                 style={{

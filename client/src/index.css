@@ -10,7 +10,7 @@
     @apply mx-auto w-full  px-[5%] md:px-[10%] lg:px-[8%] xl:px-[10%];
   }
   .button1 {
-    @apply rounded-2xl bg-accent px-4 py-2 text-white transition-colors duration-200 hover:bg-primary hover:text-accent;
+    @apply rounded-2xl bg-accent px-4 py-2 font-poppins text-white transition-colors duration-200 hover:bg-primary hover:text-accent;
   }
   .button2 {
     @apply rounded-2xl border-[2px] border-accent px-4 py-2 text-white transition-colors duration-200 hover:bg-accent;

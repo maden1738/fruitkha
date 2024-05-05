@@ -1,5 +1,3 @@
-import React from "react";
-
 import Hero from "../components/home/Hero";
 import Products from "../components/home/Products";
 import {
@@ -7,8 +5,12 @@ import {
   FaPhoneVolume,
   FaSync,
   FaShoppingCart,
+  FaPlay,
 } from "react-icons/fa";
 import hero1 from "../assets/a.jpg";
+import Testimonials from "../components/home/Testimonials";
+import abtImage from "../assets/abt.jpg";
+import discountImage from "../assets/1.jpg";
 
 export default function Home() {
   return (
@@ -98,6 +100,72 @@ export default function Home() {
             <FaShoppingCart className="text-base" />
             <p>Add to Cart</p>
           </button>
+        </div>
+      </section>
+      <Testimonials />
+      <section className="wrapper grid grid-cols-2">
+        <div className=" relative flex h-[450px] w-[540px] items-center justify-center overflow-hidden rounded-lg px-3">
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `url('${abtImage}')`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              filter: "brightness(.6)",
+              content: "''",
+            }}
+          ></div>
+          <a
+            href="https://www.youtube.com/watch?v=8ZjFAhQjGzY&t=3170s"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="isolate flex aspect-square h-[85px] cursor-pointer items-center justify-center rounded-full bg-accent text-black hover:bg-secondary hover:text-accent"
+          >
+            <FaPlay className="text-lg " />
+          </a>
+        </div>
+        <div className="my-auto px-8 font-open text-secondary">
+          <p className="">Since year 1999</p>
+          <h2 className="mt-3 font-poppins text-4xl font-bold">
+            We are <span className="text-accent "> Fruitkha</span>{" "}
+          </h2>
+          <p className="mt-4">
+            Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa
+            porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit
+            amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum
+            velit. Nam eu molestie lorem.
+          </p>
+          <p className="mt-3  ">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente
+            facilis illo repellat veritatis minus, et labore minima mollitia qui
+            ducimus.
+          </p>
+          <button className="button1 mt-5">know more</button>
+        </div>
+      </section>
+      <section
+        className="h mt-24 h-[490px] w-screen bg-cover py-28"
+        style={{ backgroundImage: `url('${discountImage}')` }}
+      >
+        <div className="wrapper text-secondary">
+          <h3 className=" font-poppins text-5xl font-bold ">
+            December sale is on
+          </h3>
+          <h3 className=" mt-1 font-poppins text-5xl font-bold ">
+            with big <span className="text-accent">Discount...</span>
+          </h3>
+          <div className="mt-6 flex gap-3 font-open ">
+            <div>
+              <p className="text-2xl ">Sale!</p>
+              <p className="text-2xl ">Upto</p>
+            </div>
+            <p>
+              <span className="text-6xl font-bold text-accent">50%</span>
+            </p>
+            <p className="mt-auto text-2xl">off</p>
+          </div>
+          <button className="button1 mt-5">Shop now</button>
         </div>
       </section>
     </>
