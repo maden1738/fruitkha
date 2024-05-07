@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const handleServerError = require("./middleware/handleServerError");
 const fruitRoutes = require("./routes/Fruit");
 const userRoutes = require("./routes/User");
+const newsRoutes = require("./routes/News");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static("uploads"));
 
 app.use(fruitRoutes);
 app.use(userRoutes);
+app.use(newsRoutes);
 
 app.use(handleServerError);
 
