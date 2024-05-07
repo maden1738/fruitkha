@@ -7,6 +7,8 @@ import News from "./pages/News";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
 import Footer from "./components/common/Footer";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="news" element={<News />}></Route>
         <Route path="contact" element={<Contact />}></Route>
         <Route path="shop" element={<Shop />}></Route>
+        <Route path="cart" element={<Cart />}></Route>
+        <Route path="checkout" element={<Checkout />}></Route>
       </Routes>
       <Footer />
     </>
