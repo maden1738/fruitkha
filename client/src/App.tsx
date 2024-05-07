@@ -6,6 +6,7 @@ import Pages from "./pages/Pages";
 import News from "./pages/News";
 import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
+import Footer from "./components/common/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="contact" element={<Contact />}></Route>
         <Route path="shop" element={<Shop />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 }

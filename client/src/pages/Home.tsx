@@ -11,6 +11,7 @@ import hero1 from "../assets/a.jpg";
 import Testimonials from "../components/home/Testimonials";
 import abtImage from "../assets/abt.jpg";
 import discountImage from "../assets/1.jpg";
+import News from "../components/home/News";
 
 export default function Home() {
   return (
@@ -168,6 +169,7 @@ export default function Home() {
           <button className="button1 mt-5">Shop now</button>
         </div>
       </section>
+      <News />
     </>
   );
 }
