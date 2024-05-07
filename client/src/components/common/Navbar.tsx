@@ -1,9 +1,10 @@
 import { useState } from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [navbar, setNavbar] = useState(false);
 
   function changeBackground() {
@@ -81,7 +82,12 @@ export default function Navbar() {
         </ul>
       </nav>
       <div className="flex items-center gap-7 ">
-        <FaShoppingCart className="cursor-pointer hover:text-accent" />
+        <FaShoppingCart
+          className="cursor-pointer hover:text-accent"
+          onClick={() => {
+            navigate("/cart");
+          }}
+        />
         <FaSearch className="cursor-pointer hover:text-accent" />
       </div>
     </div>

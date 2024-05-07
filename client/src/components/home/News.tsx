@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../../constants/domain";
+import { useNavigate } from "react-router-dom";
 
 export default function News() {
+  const navigate = useNavigate();
   type createdBy = {
     _id: string;
     name: string;
@@ -50,7 +52,14 @@ export default function News() {
         </>
       ))}
       <div className="mt-20 flex justify-center">
-        <button className="button1">More news</button>
+        <button
+          className="button1"
+          onClick={() => {
+            navigate("/news");
+          }}
+        >
+          More news
+        </button>
       </div>
     </section>
   );

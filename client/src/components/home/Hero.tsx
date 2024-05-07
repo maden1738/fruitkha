@@ -1,10 +1,11 @@
-import React from "react";
 import { heroData } from "../../herodata";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   var settings = {
     dots: false,
     arrows: false,
@@ -51,7 +52,13 @@ export default function Hero() {
                 </h1>
                 <div className="flex gap-8">
                   {hero.button.map((el, idx) => (
-                    <button key={idx} className={el.style}>
+                    <button
+                      key={idx}
+                      className={el.style}
+                      onClick={() => {
+                        navigate(el.link);
+                      }}
+                    >
                       {el.name}
                     </button>
                   ))}

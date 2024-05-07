@@ -12,8 +12,10 @@ import Testimonials from "../components/home/Testimonials";
 import abtImage from "../assets/abt.jpg";
 import discountImage from "../assets/1.jpg";
 import News from "../components/home/News";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <Hero />
@@ -142,7 +144,14 @@ export default function Home() {
             facilis illo repellat veritatis minus, et labore minima mollitia qui
             ducimus.
           </p>
-          <button className="button1 mt-5">know more</button>
+          <button
+            className="button1 mt-5"
+            onClick={() => {
+              navigate("/about");
+            }}
+          >
+            know more
+          </button>
         </div>
       </section>
       <section
@@ -166,7 +175,14 @@ export default function Home() {
             </p>
             <p className="mt-auto text-2xl">off</p>
           </div>
-          <button className="button1 mt-5">Shop now</button>
+          <button
+            className="button1 mt-5"
+            onClick={() => {
+              navigate("/shop");
+            }}
+          >
+            Shop now
+          </button>
         </div>
       </section>
       <News />
