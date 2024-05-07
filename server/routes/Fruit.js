@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getFruit, postFruit } = require("../controller/Fruit");
+const { getFruit, postFruit, updateFruit } = require("../controller/Fruit");
 const { upload } = require("../middleware/multer.middleware");
 const { checkAuthentication } = require("../middleware/auth");
 
@@ -13,5 +13,6 @@ router.post(
      upload.single("image"),
      postFruit
 );
+router.put("/api/fruit/:id", checkAuthentication, updateFruit);
 
 module.exports = router;

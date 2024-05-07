@@ -26,6 +26,11 @@ const FruitSchema = new Schema({
      image: {
           type: String, // we only save image path
           default: null,
+          required: true,
+     },
+     description: {
+          type: String,
+          required: true,
      },
 });
 

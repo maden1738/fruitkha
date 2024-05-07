@@ -48,7 +48,24 @@ const postFruit = async (req, res, next) => {
      }
 };
 
+const updateFruit = async (req, res, next) => {
+     console.log(req.params);
+     try {
+          let fruit = await FruitModel.findByIdAndUpdate(
+               req.params.id,
+               req.body,
+               {
+                    new: true,
+               }
+          );
+          res.send(fruit);
+     } catch (err) {
+          next(err);
+     }
+};
+
 module.exports = {
      getFruit,
      postFruit,
+     updateFruit,
 };
