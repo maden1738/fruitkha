@@ -49,7 +49,7 @@ const postFruit = async (req, res, next) => {
 };
 
 const updateFruit = async (req, res, next) => {
-     console.log(req.params);
+     // console.log(req.params);
      try {
           let fruit = await FruitModel.findByIdAndUpdate(
                req.params.id,

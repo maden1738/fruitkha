@@ -3,6 +3,15 @@ import axios from "axios";
 import { API_URL } from "../../constants/domain";
 import { useNavigate } from "react-router-dom";
 
+import NewsCard from "../common/NewsCard";
+
+function formatDate(dateStr: string): string {
+  const dateObj = new Date(dateStr);
+  const month = dateObj.toLocaleString("default", { month: "long" });
+  const day = dateObj.getDate();
+  return `${day}th ${month}, ${dateObj.getFullYear()}`;
+}
+
 export default function News() {
   const navigate = useNavigate();
   type createdBy = {
@@ -13,9 +22,11 @@ export default function News() {
   interface News {
     _id: string;
     title: string;
+    subtitle: string;
     content: string;
     image: string;
     createdBy: createdBy;
+    createdAt: string;
     [key: string]: any;
   }
 
@@ -37,20 +48,25 @@ export default function News() {
           <div className="absolute bottom-0 left-0 right-0 mx-auto h-[2px] w-[20%] bg-accent bg-center content-none"></div>
           <span className="  text-accent">Our </span>News
         </h3>
-        <p className="mx-auto mt-2 max-w-[530px] font-open text-text">
+        <p className="mx-auto mb-32 mt-2 max-w-[530px] font-open text-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
           fuga quas itaque eveniet beatae optio.
         </p>
       </div>
-
-      {news.map((el) => (
-        <>
-          <img src={el.image} alt="" />
-          <div>{el.title}</div>
-          <div>{el.createdBy.name}</div>
-          <div dangerouslySetInnerHTML={{ __html: el.content }}></div>
-        </>
-      ))}
+      <div className="grid grid-cols-3 gap-7 ">
+        {news.map((el, idx) => (
+          <NewsCard
+            key={idx}
+            id={el._id}
+            title={el.title}
+            subtitle={el.subtitle}
+            image={el.image}
+            createdAt={el.createdAt}
+            createdBy={el.createdBy.name}
+            formatDate={formatDate}
+          />
+        ))}
+      </div>
       <div className="mt-20 flex justify-center">
         <button
           className="button1"

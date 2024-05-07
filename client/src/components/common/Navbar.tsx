@@ -33,7 +33,7 @@ export default function Navbar() {
             <Link to="/about">About</Link>
           </li>
           <li className="group relative ">
-            <li className="cursor-pointer hover:text-accent">Pages</li>
+            <div className="cursor-pointer hover:text-accent">Pages</div>
             <div className="absolute  left-[-10px] top-6 hidden w-[190px] rounded-md bg-white p-4 text-sm font-semibold text-[#555]  group-hover:inline-block ">
               <ul className="capitalize">
                 <li className="p-2  hover:text-accent">
@@ -64,7 +64,7 @@ export default function Navbar() {
             <Link to="/contact">Contact</Link>
           </li>
           <li className="group relative ">
-            <li className=" cursor-pointer hover:text-accent">Shop</li>
+            <div className=" cursor-pointer hover:text-accent">Shop</div>
             <div className="absolute  left-[-10px] top-6 hidden w-[190px] rounded-md bg-white p-4 text-sm font-semibold text-[#555] opacity-0  transition-opacity duration-[5s] group-hover:inline-block group-hover:opacity-100">
               <ul className="capitalize">
                 <li className="p-2  hover:text-accent">

@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import Footer from "./components/common/Footer";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import SingleNews from "./pages/SingleNews";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
         <Route path="" element={<Home />}></Route>
         <Route path="about" element={<About />}></Route>
         <Route path="pages" element={<Pages />}></Route>
-        <Route path="news" element={<News />}></Route>
+        <Route path="news">
+          <Route path="" element={<News />} />
+          <Route path=":slug" element={<SingleNews />} />
+        </Route>
         <Route path="contact" element={<Contact />}></Route>
         <Route path="shop" element={<Shop />}></Route>
         <Route path="cart" element={<Cart />}></Route>

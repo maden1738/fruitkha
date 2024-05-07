@@ -16,6 +16,10 @@ const NewsSchema = new Schema(
                required: true,
                type: String,
           },
+          subtitle: {
+               required: true,
+               type: String,
+          },
           content: {
                required: true,
                type: String,
@@ -24,6 +28,7 @@ const NewsSchema = new Schema(
                type: String,
                required: true,
           },
+
           createdBy: CreatedBySchema,
      },
      { timestamps: true }
