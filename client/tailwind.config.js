@@ -11,6 +11,7 @@ export default {
         primary: "#07212e",
         secondary: "#051922",
         background: "#f5f5f5",
+        background2: "#384d57",
         accent: "#f28123",
         accent2: "#f28123bf",
         text: "#888888",

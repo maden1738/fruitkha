@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -81,14 +82,27 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-      <div className="flex items-center gap-7 ">
+      <div className="flex items-center gap-5 ">
         <FaShoppingCart
           className="cursor-pointer hover:text-accent"
           onClick={() => {
             navigate("/cart");
           }}
         />
-        <FaSearch className="cursor-pointer hover:text-accent" />
+        <FaSearch className="cursor-pointer hover:text-accent " />
+        <div className="group relative">
+          <CgProfile className="cursor-pointer font-bold hover:text-accent" />
+          <div className="absolute left-[-80px] top-4 hidden w-[100px] rounded-md bg-white p-4 text-sm font-semibold text-[#555]  group-hover:inline-block ">
+            <ul className="capitalize">
+              <li className="p-2  text-end hover:text-accent">
+                <Link to="/login">Login</Link>
+              </li>
+              <li className="p-2 text-end hover:text-accent">
+                <Link to="/signup">Signup</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
