@@ -2,6 +2,15 @@ const UserModel = require("../model/User");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 
+const getUser = async (req, res, next) => {
+     try {
+          const user = await UserModel.findById(req.params.id);
+          res.send(user);
+     } catch (error) {
+          next(error);
+     }
+};
+
 const signup = async (req, res, next) => {
      try {
           const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -43,4 +52,4 @@ const login = async (req, res, next) => {
      }
 };
 
-module.exports = { signup, login };
+module.exports = { signup, login, getUser };
