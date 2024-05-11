@@ -30,22 +30,22 @@ const login = async (req, res, next) => {
           let user = await UserModel.findOne({
                email: req.body.email,
           }).select("+password");
-          if (user) {
-               let matched = await bcrypt.compare(
-                    req.body.password,
-                    user.password
-               );
-               if (matched) {
-                    user = user.toObject();
-                    const SECRET_KEY = process.env.ACCESS_TOKEN_SECRET;
-                    var token = jwt.sign(user, SECRET_KEY);
-                    return res.send({
-                         user,
-                         token,
-                    });
-               }
+          if (!user) {
+               res.status(401).send("Incorrect email");
           }
-          res.status(401).send("Invalid Credentials");
+
+          let matched = await bcrypt.compare(req.body.password, user.password);
+          if (matched) {
+               user = user.toObject();
+               const SECRET_KEY = process.env.ACCESS_TOKEN_SECRET;
+               var token = jwt.sign(user, SECRET_KEY);
+               return res.send({
+                    user,
+                    token,
+               });
+          }
+
+          res.status(401).send("Invalid password");
      } catch (error) {
           next(error);
      }

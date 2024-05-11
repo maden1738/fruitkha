@@ -14,12 +14,29 @@ import Login from "./pages/Login";
 import React from "react";
 import axios from "axios";
 import { API_URL } from "./constants/domain";
+import { useDispatch } from "react-redux";
+import { setUser } from "./app/slice/userSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  // React.useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   axios.get(`${API_URL}/user/:${token}`);
-  // }, []);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .get(`${API_URL}/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          dispatch(setUser(res.data));
+        })
+        .catch(() => alert("Invalid token"));
+    }
+  }, []);
 
   return (
     <>
@@ -39,6 +56,7 @@ function App() {
         <Route path="login" element={<Login />}></Route>
       </Routes>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

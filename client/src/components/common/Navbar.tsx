@@ -3,8 +3,15 @@ import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { logout } from "../../app/slice/userSlice";
+import { toast } from "react-toastify";
+import { toastSettings } from "../../constants/settings";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const user = useSelector((store: RootState) => store.user.value);
   const navigate = useNavigate();
   const [navbar, setNavbar] = useState(false);
 
@@ -14,6 +21,12 @@ export default function Navbar() {
     } else {
       setNavbar(false);
     }
+  }
+
+  function logOut() {
+    dispatch(logout());
+    toast.info("Logged out successfully", toastSettings);
+    // window.location.reload();
   }
 
   window.addEventListener("scroll", changeBackground);
@@ -64,25 +77,23 @@ export default function Navbar() {
           <li className="hover:text-accent">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="group relative ">
-            <div className=" cursor-pointer hover:text-accent">Shop</div>
-            <div className="absolute  left-[-10px] top-6 hidden w-[190px] rounded-md bg-white p-4 text-sm font-semibold text-[#555] opacity-0  transition-opacity duration-[5s] group-hover:inline-block group-hover:opacity-100">
-              <ul className="capitalize">
-                <li className="p-2  hover:text-accent">
-                  <Link to="/shop">Shop</Link>
-                </li>
-                <li className="p-2 hover:text-accent">
-                  <Link to="/checkout ">checkout</Link>
-                </li>
-                <li className="p-2 hover:text-accent">
-                  <Link to="/cart ">cart</Link>
-                </li>
-              </ul>
-            </div>
+          <li className="group relative p-2">
+            <div className=" block cursor-pointer hover:text-accent ">Shop</div>
+            <ul className="absolute  left-[-10px] top-8 hidden w-[190px] rounded-md bg-white p-4 text-sm font-semibold  text-[#555] transition-opacity duration-[5s] group-hover:inline-block ">
+              <li className="p-2  hover:text-accent">
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li className="p-2 hover:text-accent">
+                <Link to="/checkout ">checkout</Link>
+              </li>
+              <li className="p-2 hover:text-accent">
+                <Link to="/cart ">cart</Link>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
-      <div className="flex items-center gap-5 ">
+      <div className="flex items-center gap-5  ">
         <FaShoppingCart
           className="cursor-pointer hover:text-accent"
           onClick={() => {
@@ -90,17 +101,38 @@ export default function Navbar() {
           }}
         />
         <FaSearch className="cursor-pointer hover:text-accent " />
-        <div className="group relative">
-          <CgProfile className="cursor-pointer font-bold hover:text-accent" />
-          <div className="absolute left-[-80px] top-4 hidden w-[100px] rounded-md bg-white p-4 text-sm font-semibold text-[#555]  group-hover:inline-block ">
-            <ul className="capitalize">
-              <li className="p-1  text-end hover:text-accent">
-                <Link to="/login">Login</Link>
-              </li>
-              <li className="p-1 text-end hover:text-accent">
-                <Link to="/signup">Signup</Link>
-              </li>
-            </ul>
+        <div className="group relative py-2  ">
+          <CgProfile className="block cursor-pointer  font-bold hover:text-accent " />
+          <div className="absolute left-[-70px] top-8 hidden  w-[120px]  rounded-md  bg-white  p-4 font-open text-sm font-semibold text-[#555] group-hover:inline-block">
+            {user ? (
+              <>
+                <ul className="">
+                  <li className="p-1 text-end">
+                    hi,{" "}
+                    <span className="text-base  uppercase text-accent">
+                      {user.name.split(" ")[0]}
+                    </span>
+                  </li>
+                  <li
+                    className="cursor-pointer p-1 text-end hover:text-accent"
+                    onClick={logOut}
+                  >
+                    Logout
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <>
+                <ul className="capitalize">
+                  <li className="p-1  text-end hover:text-accent">
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li className="p-1 text-end hover:text-accent">
+                    <Link to="/login">Signup</Link>
+                  </li>
+                </ul>
+              </>
+            )}
           </div>
         </div>
       </div>
