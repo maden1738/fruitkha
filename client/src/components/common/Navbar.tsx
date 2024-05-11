@@ -94,10 +94,10 @@ export default function Navbar() {
           <CgProfile className="cursor-pointer font-bold hover:text-accent" />
           <div className="absolute left-[-80px] top-4 hidden w-[100px] rounded-md bg-white p-4 text-sm font-semibold text-[#555]  group-hover:inline-block ">
             <ul className="capitalize">
-              <li className="p-2  text-end hover:text-accent">
+              <li className="p-1  text-end hover:text-accent">
                 <Link to="/login">Login</Link>
               </li>
-              <li className="p-2 text-end hover:text-accent">
+              <li className="p-1 text-end hover:text-accent">
                 <Link to="/signup">Signup</Link>
               </li>
             </ul>
