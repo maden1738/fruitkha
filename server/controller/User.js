@@ -4,8 +4,7 @@ var jwt = require("jsonwebtoken");
 
 const getUser = async (req, res, next) => {
      try {
-          const user = await UserModel.findById(req.params.id);
-          res.send(user);
+          res.send(req.user);
      } catch (error) {
           next(error);
      }

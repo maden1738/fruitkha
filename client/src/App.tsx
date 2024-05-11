@@ -11,8 +11,16 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import SingleNews from "./pages/SingleNews";
 import Login from "./pages/Login";
+import React from "react";
+import axios from "axios";
+import { API_URL } from "./constants/domain";
 
 function App() {
+  // React.useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   axios.get(`${API_URL}/user/:${token}`);
+  // }, []);
+
   return (
     <>
       <Navbar />
