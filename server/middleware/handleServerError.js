@@ -19,7 +19,7 @@ module.exports = (error, req, res, next) => {
      //    console.log(errorsArray);
      //    console.log(errorsArray[0][1].message);
 
-     return res.status(status).send({
+     res.status(status).send({
           error: error.message,
           msg: message,
           errors: errors,

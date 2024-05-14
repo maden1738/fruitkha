@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
                email: req.body.email,
           }).select("+password");
           if (!user) {
-               res.status(401).send("Incorrect email");
+               return res.status(401).send("Email doesnt exist");
           }
 
           let matched = await bcrypt.compare(req.body.password, user.password);

@@ -34,7 +34,7 @@ function App() {
         .then((res) => {
           dispatch(setUser(res.data));
         })
-        .catch(() => alert("Invalid token"));
+        .catch(() => console.log("Invalid token "));
     }
   }, []);
 
