@@ -1,3 +1,9 @@
+import Breadcrumb from "../components/common/Breadcrumb";
+
 export default function Cart() {
-  return <div>Cart</div>;
+  return (
+    <>
+      <Breadcrumb heading="Cart" subHeading="fresh and organic" />
+    </>
+  );
 }

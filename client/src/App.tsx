@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./app/slice/userSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { loadCart } from "./app/slice/cartSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,10 @@ function App() {
         })
         .then((res) => {
           dispatch(setUser(res.data));
+          const cart = localStorage.getItem("cart");
+          if (cart) {
+            dispatch(loadCart(JSON.parse(cart)));
+          }
         })
         .catch(() => console.log("Invalid token "));
     }

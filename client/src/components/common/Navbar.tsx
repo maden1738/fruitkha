@@ -8,6 +8,7 @@ import { RootState } from "../../app/store";
 import { logout } from "../../app/slice/userSlice";
 import { toast } from "react-toastify";
 import { toastSettings } from "../../constants/settings";
+import { clearCart } from "../../app/slice/cartSlice";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function Navbar() {
 
   function logOut() {
     dispatch(logout());
+    dispatch(clearCart());
     toast.info("Logged out successfully", toastSettings);
     // window.location.reload();
   }
