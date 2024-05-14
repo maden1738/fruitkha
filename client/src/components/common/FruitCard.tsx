@@ -1,6 +1,7 @@
 import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../app/slice/cartSlice";
+import checkAuthentication from "../../hooks/checkAuthentication";
 
 type FruitCardProps = {
   image: string;
@@ -10,6 +11,7 @@ type FruitCardProps = {
 
 export default function FruitCard({ image, price, name }: FruitCardProps) {
   const dispatch = useDispatch();
+  const authenticate = checkAuthentication();
   return (
     <div className="flex flex-col items-center rounded-md pb-12 font-poppins shadow-lg hover:shadow-none">
       <div className="px-8 pt-8 ">
@@ -23,7 +25,9 @@ export default function FruitCard({ image, price, name }: FruitCardProps) {
       <button
         className=" button3 mt-5 "
         onClick={() => {
-          dispatch(addToCart({ image, price, name }));
+          authenticate(() => {
+            dispatch(addToCart({ image, price, name }));
+          });
         }}
       >
         <FaShoppingCart className="text-base" />
