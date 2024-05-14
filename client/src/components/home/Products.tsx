@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../../constants/domain";
-import { FaShoppingCart } from "react-icons/fa";
+import FruitCard from "../common/FruitCard";
 
 export default function Products() {
   interface Product {
@@ -38,29 +38,12 @@ export default function Products() {
       </section>
       <section className="mt-28 grid grid-cols-3 gap-4">
         {products.map((product, idx) => (
-          <div
+          <FruitCard
             key={idx}
-            className="flex flex-col items-center rounded-md pb-12 font-poppins shadow-lg hover:shadow-none"
-          >
-            <div className="px-8 pt-8 ">
-              <img
-                src={product.image}
-                alt=""
-                className="aspect-square h-[261px]"
-              />
-            </div>
-            <h3 className=" text-center text-xl font-bold text-primary">
-              {product.name}
-            </h3>
-            <div className="text-center">
-              <p className="mt-3 text-sm text-primary">Per Kg</p>
-              <p className="mt-3 text-2xl font-bold">Rs.{product.price}</p>
-            </div>
-            <button className=" button3 mt-5 ">
-              <FaShoppingCart className="text-base" />
-              <p>Add to Cart</p>
-            </button>
-          </div>
+            image={product.image}
+            name={product.name}
+            price={product.price}
+          />
         ))}
       </section>
     </div>
