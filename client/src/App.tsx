@@ -19,6 +19,7 @@ import { setUser } from "./app/slice/userSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { loadCart } from "./app/slice/cartSlice";
+import ShopSingle from "./pages/ShopSingle";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +56,10 @@ function App() {
           <Route path=":slug" element={<SingleNews />} />
         </Route>
         <Route path="contact" element={<Contact />}></Route>
-        <Route path="shop" element={<Shop />}></Route>
+        <Route path="shop">
+          <Route path="" element={<Shop />} />
+          <Route path=":slug" element={<ShopSingle />} />
+        </Route>
         <Route path="cart" element={<Cart />}></Route>
         <Route path="checkout" element={<Checkout />}></Route>
         <Route path="login" element={<Login />}></Route>
