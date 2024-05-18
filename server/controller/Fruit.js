@@ -48,6 +48,15 @@ const postFruit = async (req, res, next) => {
      }
 };
 
+const getSingleFruit = async (req, res, next) => {
+     try {
+          let fruit = await FruitModel.findById(req.params.id);
+          res.send(fruit);
+     } catch (error) {
+          next(error);
+     }
+};
+
 const updateFruit = async (req, res, next) => {
      // console.log(req.params);
      try {
@@ -67,5 +76,6 @@ const updateFruit = async (req, res, next) => {
 module.exports = {
      getFruit,
      postFruit,
+     getSingleFruit,
      updateFruit,
 };
