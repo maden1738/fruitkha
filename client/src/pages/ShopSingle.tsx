@@ -5,6 +5,10 @@ import { API_URL } from "../constants/domain";
 import { useParams } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import Products from "../components/home/Products";
+import { useDispatch } from "react-redux";
+import { updateCart } from "../app/slice/cartSlice";
+import { toast } from "react-toastify";
+import { toastSettings } from "../constants/settings";
 
 export default function ShopSingle() {
   interface Product {
@@ -16,7 +20,7 @@ export default function ShopSingle() {
   }
 
   const [product, setProduct] = useState<Product | null>(null);
-
+  const dispatch = useDispatch();
   const { slug } = useParams();
 
   useEffect(() => {
@@ -53,7 +57,22 @@ export default function ShopSingle() {
                 repudiandae ea tempora incidunt ipsa, quisquam animi perferendis
                 eos eum modi! Tempora, earum.
               </p>
-              <form>
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  dispatch(
+                    updateCart({
+                      id: product._id,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                      quantity: (event.target as HTMLFormElement).quantity
+                        .value,
+                    }),
+                  );
+                  toast.success("Product added to cart", toastSettings);
+                }}
+              >
                 <input
                   name="quantity"
                   type="number"

@@ -20,30 +20,45 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      let temp = [...state.value];
-      let newCartItem = action.payload;
-      newCartItem["quantity"] = 1;
-      temp.push(newCartItem);
-      state.value = temp;
+      let cartItems = [...state.value];
+      const product = action.payload;
+      let exists = false;
+      cartItems = cartItems.map((item) => {
+        if (item.id === product.id) {
+          exists = true;
+        }
+        return item;
+      });
+
+      if (!exists) {
+        product["quantity"] = 1;
+        cartItems.push(product);
+      }
+      state.value = cartItems;
       localStorage.setItem("cart", JSON.stringify(state.value));
     },
 
     updateCart: (state, action) => {
-      const productId = action.payload.id;
-      const quantity = action.payload.value;
+      const product = action.payload;
       let cartItems = [...state.value];
-
-      if (quantity !== 0) {
+      let exists = false;
+      if (product.quantity === 0) {
+        cartItems = cartItems.filter((item) => item.id !== product.id); // removing the product once the quantity reaches zero
+      } else {
+        // searching for the product and updating the quantity count
         cartItems = cartItems.map((item) => {
-          if (item.id === productId) {
-            return { ...item, quantity: quantity };
+          if (item.id === product.id) {
+            console.log("there");
+            exists = true;
+            return { ...item, quantity: product.quantity };
           }
           return item;
         });
-      } else {
-        cartItems = cartItems.filter((item) => item.id !== productId);
+        if (!exists) {
+          console.log("here");
+          cartItems.push(product);
+        }
       }
-
       state.value = cartItems;
       localStorage.setItem("cart", JSON.stringify(state.value));
     },

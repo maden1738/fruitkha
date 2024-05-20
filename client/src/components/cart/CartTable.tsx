@@ -77,7 +77,7 @@ export default function CartTable() {
               <TableCell component="th" scope="row">
                 <FaRegWindowClose
                   onClick={() => {
-                    dispatch(updateCart({ id: row.id, value: 0 }));
+                    dispatch(updateCart({ id: row.id, quantity: 0 }));
                   }}
                   className="cursor-pointer hover:text-red-600"
                 />
@@ -100,7 +100,13 @@ export default function CartTable() {
                   value={row.quantity}
                   onChange={(event) => {
                     dispatch(
-                      updateCart({ id: row.id, value: event.target.value }),
+                      updateCart({
+                        id: row.id,
+                        name: row.name,
+                        image: row.image,
+                        price: row.price,
+                        quantity: event.target.value,
+                      }),
                     );
                   }}
                 />
