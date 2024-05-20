@@ -7,7 +7,7 @@
 
 @layer components {
   .wrapper {
-    @apply mx-auto w-full  px-[5%] md:px-[10%] lg:px-[5%] xl:px-[10%];
+    @apply mx-auto w-full  px-[5%] md:px-[10%] lg:px-[5%] xl:px-[10%] 2xl:px-[20%];
   }
   .button1 {
     @apply rounded-2xl   bg-accent px-4 py-2 font-poppins text-white transition-colors duration-300 ease-in  hover:bg-primary hover:text-accent;

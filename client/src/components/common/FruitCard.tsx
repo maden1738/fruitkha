@@ -21,7 +21,7 @@ export default function FruitCard({ image, price, name, id }: FruitCardProps) {
     <div
       className="flex cursor-pointer flex-col items-center rounded-md pb-12 font-poppins shadow-lg hover:shadow-none"
       onClick={() => {
-        navigate(`shop/${id}`);
+        navigate(`/shop/${id}`);
       }}
     >
       <div className="px-8 pt-8 ">

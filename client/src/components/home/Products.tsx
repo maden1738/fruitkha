@@ -3,7 +3,11 @@ import axios from "axios";
 import { API_URL } from "../../constants/domain";
 import FruitCard from "../common/FruitCard";
 
-export default function Products() {
+type ProductsProps = {
+  title: string;
+};
+
+export default function Products({ title }: ProductsProps) {
   interface Product {
     _id: string;
     name: string;
@@ -28,7 +32,7 @@ export default function Products() {
     <div className="wrapper h-auto bg-white py-36">
       <section className="h-[73px] px-56 text-center">
         <h3 className=" font-poppins text-4xl font-bold">
-          <span className="text-accent">Our</span> Products
+          <span className="text-accent">{title}</span> Products
         </h3>
         <p className="mt-5 text-text ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo

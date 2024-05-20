@@ -60,7 +60,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Products />
+      <Products title="Our" />
       <section className=" wrapper grid grid-cols-2 bg-background py-24">
         <div className="relative px-4 pt-8">
           <img src={hero1} alt="" className="max-w-full" />
